@@ -19,7 +19,7 @@ class ViewsTask extends WatchableBuilder {
      */
     addAngularFolderStructureToCompile(baseFolder){
         this.addFilesToCompile(
-            Globs.Templates.map(glob => path.join(baseFolder, glob))
+            Globs.Views.map(glob => path.join(baseFolder, glob))
         );
         return this;
     };
