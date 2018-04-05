@@ -6,7 +6,10 @@ const AppModule = new Application('demo')
     .setTasks([
         new Application.Views()
             .setOutputName('demo.app.js')
-            .addAngularFolderStructureToCompile('./app/')
+            .addAngularFolderStructureToCompile('./app/'),
+        new Application.Libs()
+            .setOutputName('demo.libs.js')
+            .addNodeDependencyPackage('ramda/dist/ramda')
     ]);
 
 ApplicationRegister.register(AppModule);
