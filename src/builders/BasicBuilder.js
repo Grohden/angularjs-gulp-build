@@ -1,10 +1,10 @@
-const path = require('path');
-const R = require('ramda');
+const path = require("path");
+const R = require("ramda");
 
 class BasicBuilder {
   constructor() {
     this.compileFiles = [];
-    this.outputFileName = './';
+    this.outputFileName = "./";
   }
 
   /**
@@ -47,15 +47,15 @@ class BasicBuilder {
    * @param {string} baseFolder a folder to be mapped to the angular glob pattern
    */
   addAngularFolderStructureToCompile(baseFolder) {
-    throw 'addAngularFolderStructureToCompile is not implemented by the builder class';
+    throw "addAngularFolderStructureToCompile is not implemented by the builder class";
   }
 
   getTaskName() {
-    throw 'getTaskName must be implemented by the builder class';
+    throw "getTaskName must be implemented by the builder class";
   }
 
   onRegister(moduleName) {
-    throw 'onRegister must be implemented by the builder class';
+    throw "onRegister must be implemented by the builder class";
   }
 }
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "prettier": "prettier --single-quote --trailing-comma es5 --write \"{src, demo}/**/*.js\""
+    "prettier": "prettier --write \"{src, demo}/**/*.js\""
   },
   "repository": {
     "type": "git",

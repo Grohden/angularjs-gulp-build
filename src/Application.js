@@ -1,9 +1,9 @@
-const R = require('ramda');
-const gulp = require('gulp');
-const Views = require('./builders/tasks/Views');
-const Libs = require('./builders/tasks/Libs');
-const WatchableBuilder = require('./builders/WatchableBuilder');
-const path = require('path');
+const R = require("ramda");
+const gulp = require("gulp");
+const Views = require("./builders/tasks/Views");
+const Libs = require("./builders/tasks/Libs");
+const WatchableBuilder = require("./builders/WatchableBuilder");
+const path = require("path");
 
 class Application {
   /**
@@ -12,7 +12,7 @@ class Application {
    */
   constructor(appName) {
     this.appName = appName;
-    this.outputAt = './build';
+    this.outputAt = "./build";
     this.taskNames = [];
     this.watcherNames = [];
   }

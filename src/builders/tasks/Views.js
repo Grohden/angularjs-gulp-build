@@ -1,7 +1,7 @@
-const WatchableBuilder = require('../WatchableBuilder');
-const Globs = require('../../Globs');
-const gulp = require('gulp');
-const path = require('path');
+const WatchableBuilder = require("../WatchableBuilder");
+const Globs = require("../../Globs");
+const gulp = require("gulp");
+const path = require("path");
 
 class ViewsTask extends WatchableBuilder {
   onRegister(moduleName) {
@@ -13,7 +13,7 @@ class ViewsTask extends WatchableBuilder {
   }
 
   getOutputName() {
-    return './';
+    return "./";
   }
 
   getTaskName(moduleName) {

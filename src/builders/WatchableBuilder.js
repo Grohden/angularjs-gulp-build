@@ -1,6 +1,6 @@
-const path = require('path');
-const R = require('ramda');
-const BasicBuilder = require('./BasicBuilder');
+const path = require("path");
+const R = require("ramda");
+const BasicBuilder = require("./BasicBuilder");
 
 class WatchableBuilder extends BasicBuilder {
   constructor() {

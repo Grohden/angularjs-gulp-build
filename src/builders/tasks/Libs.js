@@ -1,8 +1,8 @@
-const BasicBuilder = require('../BasicBuilder');
-const Globs = require('../../Globs');
-const gulp = require('gulp');
-const concat = require('gulp-concat');
-const path = require('path');
+const BasicBuilder = require("../BasicBuilder");
+const Globs = require("../../Globs");
+const gulp = require("gulp");
+const concat = require("gulp-concat");
+const path = require("path");
 
 class LibsTask extends BasicBuilder {
   onRegister(moduleName) {
