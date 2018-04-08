@@ -22,10 +22,51 @@ The focus on AngularJS is the part where the tool provide default gulp task buil
 
 If you have a small project, you probably don't need this tool, but if you have a huge *MPA* (multipage application)
 and don't want to write `import`, `require` or simply *don't want to touch your js*, this tool should make your life easier.
-If you try to write gulp tasks for every SPA inside your project, you will end up with a messy gulp file(s).
 
-Say you need to create an SPA for a `dashboard`, you probably would end up with a gulpfile with some tasks like `dashboard, dashboard:watch, dashboard:views:watch, dashboard:views, dashboard:scripts:watch, dashboard:scripts ...`, ok, that is not hard to maintain, but what if i need those for a `documents` SPA too? you will end up cloning the tasks and changing some details like **what files to compile and where output the source**. If get really frustrated with all the duplicated gulp tasks definitions you would write a build tool like this...
+Say you need to create an SPA for a `dashboard`, you probably would end up with a gulpfile with some tasks like `dashboard, dashboard:watch, dashboard:views:watch, dashboard:views, dashboard:scripts:watch, dashboard:scripts ...`, ok, that is not hard to maintain, but what 
+if you need those for a `documents` SPA too? you will end up cloning the tasks and changing 
+some details like **what files to compile and where output the source**.
+ If you get really frustrated with all the duplicated gulp tasks 
+ definitions you would write a build tool like this...
 
 ## Why not use webpack, rollup and others?
 
-To use those ones with AngularJS, you need to understand that the AngularJS DI system is almost obsolete, you would need to rewrite the existing code to be *importable* without breaking the legacy ones. I will not lie, that's a job that worth it, but it's a lot of work and if it's the first time that the team uses the import system, it will be hard do adapt.
+To use those ones with AngularJS, you need to understand that they make the AngularJS DI 
+system almost obsolete, services, factories, providers, all of those becomes useless.
+You would need to rewrite the existing code to be *importable* without breaking 
+the legacy ones and maintain part of the already wrote AngularJS codes. 
+
+I will not lie, that's a job that worth it, but it's 
+a lot of work and if it's the first time that the team uses the import system,
+it will be hard do adapt to the new concepts.
+
+## Usage example
+
+There are some examples on the demo folder, but
+a 'simply' AngularJS task builder would be:
+
+```javascript
+const {Application, ApplicationRegister} = require('gulp-angularjs-build');
+
+
+const AppModule = new Application('demo')
+    .setOutputFolder('./build')
+    .setTasks([
+        new Application.Views() // copies html to build folder
+            .addAngularFolderStructureToCompile('./app/'),
+        new Application.Libs() // concats the libs into one and dont generate a watcher task
+            .setOutputName('demo.libs.js')
+            .addNodeDependencyPackage('ramda/dist/ramda')
+    ]);
+
+ApplicationRegister.register(AppModule);
+```
+
+This will generate the following tasks:
+```
+demo [demo:views, demo:libs]
+demo:watch [demo:views:watch]
+demo:views:watch
+demo:libs
+```
+
