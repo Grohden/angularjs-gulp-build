@@ -14,7 +14,7 @@ module.exports = function({concatenatingPaths}) {
 
         const vinylFile = new Vinyl({
             cwd: '',
-            base: '',
+            base: __dirname,
             path: 'fileName',
             contents: new Buffer(toAllImportLessFile(files))
         });

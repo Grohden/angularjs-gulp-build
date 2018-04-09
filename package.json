@@ -35,6 +35,8 @@
     "gulp-remember": "^1.0.1",
     "gulp-util": "^3.0.8",
     "jshint": "^2.9.5",
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "through": "^2.3.8",
+    "vinyl": "^2.1.0"
   }
 }
