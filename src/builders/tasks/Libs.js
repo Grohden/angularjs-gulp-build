@@ -26,7 +26,7 @@ class LibsTask extends BasicBuilder {
      */
     addNodeDependencyPackages(...dependencies){
         this.addFilesToCompile(
-            dependencies.map(require.resolve)
+            ...dependencies.map(require.resolve)
         );
         return this;
     }
