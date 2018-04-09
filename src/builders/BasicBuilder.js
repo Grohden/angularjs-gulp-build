@@ -27,22 +27,12 @@ class BasicBuilder {
      * Concats a list of files/folder to the compile list
      * @param {Array.<string>} globs - paths, globs, or files to be added 
      */
-    addFilesToCompile(globs){
+    addFilesToCompile(...globs){
         this.compileFiles = R.concat(
             globs,
             this.compileFiles
         );
 
-        return this;
-    }
-
-    /**
-     * @description
-     * Adds a single file/folder to the compile list
-     * @param {string} glob - path, glob, or file to be added
-     */
-    addFileToCompile(glob) {
-        this.addFilesToCompile([glob]);
         return this;
     }
 

@@ -17,16 +17,16 @@ class LibsTask extends BasicBuilder {
     }
 
     /**
-     * Resolves the dependency folder and add it to the concated file
-     * @param {string} dependency the dependency that will be included
+     * Resolves the dependencies folder and add it to the concated file
+     * @param {Array<string>} dependencies the dependencies that will be included
      * please note that it must be the built js module.
      *
-     * @example addNodeDependencyPackage('ramda/dist/ramda')
+     * @example addNodeDependencyPackages('ramda/dist/ramda')
      *
      */
-    addNodeDependencyPackage(dependency){
-        this.addFileToCompile(
-            require.resolve(dependency)
+    addNodeDependencyPackages(...dependencies){
+        this.addFilesToCompile(
+            dependencies.map(require.resolve)
         );
         return this;
     }

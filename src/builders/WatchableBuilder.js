@@ -28,14 +28,14 @@ class WatchableBuilder extends BasicBuilder {
      * @description
      * Automatically sets compile files to watch
      * or if {@link WatchableBuilder#disableAutomaticCompileWatch} was called previously
-     * behaves like {@link BasicBuilder#addFilesToCompile}
+     * behaves like {@link BasicBuilder#globs}
      */
-    addFilesToCompile(paths){
-        super.addFilesToCompile(paths);
+    addFilesToCompile(...globs){
+        super.addFilesToCompile(...globs);
 
         if(this.automaticWatchForCompile){
             this.watchFiles = R.concat(
-                paths,
+                globs,
                 this.watchFiles
             );
         }
