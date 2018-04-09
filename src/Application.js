@@ -2,6 +2,7 @@ const R = require('ramda');
 const gulp = require('gulp');
 const Views = require('./builders/tasks/Views');
 const Libs = require('./builders/tasks/Libs');
+const LessStyles = require('./builders/tasks/LessStyles');
 const WatchableBuilder = require('./builders/WatchableBuilder');
 const path = require("path");
 
@@ -79,7 +80,10 @@ class Application {
     }
 }
 
-Application.Views = Views;
-Application.Libs = Libs;
+Object.assign(Application, {
+    Views,
+    Libs,
+    LessStyles,
+});
 
 module.exports = Application;
