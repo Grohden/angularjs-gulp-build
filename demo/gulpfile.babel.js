@@ -8,7 +8,10 @@ const AppModule = new Application('demo')
             .addAngularFolderStructureToCompile('./app/'),
         new Application.Libs()
             .setOutputName('demo.libs.js')
-            .addNodeDependencyPackage('ramda/dist/ramda')
+            .addNodeDependencyPackages('ramda/dist/ramda'),
+        new Application.LessStyles()
+            .setOutputName('demo.css')
+            .addFilesToCompile('./app/styles/*.less')
     ]);
 
 ApplicationRegister.register(AppModule);
