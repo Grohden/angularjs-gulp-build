@@ -38,10 +38,6 @@ class WatchableBuilder extends BasicBuilder {
 
     return this;
   }
-
-  getWatcherName(moduleName) {
-    return `${this.getTaskName(moduleName)}:watch`;
-  }
 }
 
 module.exports = WatchableBuilder;

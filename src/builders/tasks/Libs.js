@@ -5,12 +5,13 @@ const concat = require("gulp-concat");
 const path = require("path");
 
 class LibsTask extends BasicBuilder {
-  onRegister(moduleName) {
-    return gulp.src(this.compileFiles).pipe(concat(this.outputFileName));
+  constructor() {
+    super();
+    this.taskPostfix = "libs";
   }
 
-  getTaskName(moduleName) {
-    return `${moduleName}:libs`;
+  onRegister(moduleName) {
+    return gulp.src(this.compileFiles).pipe(concat(this.outputFileName));
   }
 
   /**

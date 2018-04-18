@@ -4,6 +4,11 @@ const gulp = require("gulp");
 const path = require("path");
 
 class ViewsTask extends WatchableBuilder {
+  constructor() {
+    super();
+    this.taskPostfix = "views";
+  }
+
   onRegister(moduleName) {
     return gulp.src(this.compileFiles);
   }
@@ -14,10 +19,6 @@ class ViewsTask extends WatchableBuilder {
 
   getOutputName() {
     return "./";
-  }
-
-  getTaskName(moduleName) {
-    return `${moduleName}:views`;
   }
 
   /**

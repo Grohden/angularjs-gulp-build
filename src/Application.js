@@ -1,5 +1,6 @@
 const R = require("ramda");
 const gulp = require("gulp");
+const NamesRules = require("./NameRules");
 const Views = require("./builders/tasks/Views");
 const Libs = require("./builders/tasks/Libs");
 const LessStyles = require("./builders/tasks/LessStyles");
@@ -29,12 +30,12 @@ class Application {
     return this;
   }
 
-  registerModuleTask(tasks) {
+  registerAppTask(tasks) {
     gulp.task(this.appName, tasks);
   }
 
   registerModuleWatcher(watchers) {
-    gulp.task(`${this.appName}:watch`, watchers);
+    gulp.task(NamesRules.join(this.appName, "watch"), watchers);
   }
 
   registerGulpTask(name, dest, pipeline) {
@@ -42,12 +43,13 @@ class Application {
   }
 
   registerWatcher(task) {
-    const watcherName = task.getWatcherName(this.appName);
-    const runTasks = [task.getTaskName(this.appName)];
+    const taskName = NamesRules.join(this.appName, task.taskPostfix);
+    const watcherName = NamesRules.join(taskName, "watch");
+    const runTask = [taskName];
     gulp.task(
       watcherName,
-      runTasks,
-      () => gulp.watch(task.getWatchFiles(), runTasks) //.on('change', deletionHandler(task.cacheName))
+      runTask,
+      () => gulp.watch(task.getWatchFiles(), runTask) //.on('change', deletionHandler(task.cacheName))
     );
   }
 
@@ -55,19 +57,19 @@ class Application {
     const { appName, tasks } = this;
 
     R.pipe(
-      R.map(t => t.getTaskName(this.appName)),
-      R.unless(R.isEmpty, tasks => this.registerModuleTask(tasks))
+      R.map(task => NamesRules.join(appName, task.taskPostfix)),
+      R.unless(R.isEmpty, tasks => this.registerAppTask(tasks))
     )(tasks);
 
     R.pipe(
       R.filter(R.is(WatchableBuilder)),
-      R.map(t => t.getWatcherName(this.appName)),
+      R.map(task => NamesRules.join(this.appName, task.taskPostfix, "watch")),
       R.unless(R.isEmpty, tasks => this.registerModuleWatcher(tasks))
     )(tasks);
 
     for (const task of tasks) {
       this.registerGulpTask(
-        task.getTaskName(this.appName),
+        NamesRules.join(appName, task.taskPostfix),
         path.normalize(this.outputAt, task.getOutputName()),
         task.onRegister(this.appName)
       );

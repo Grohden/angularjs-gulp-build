@@ -40,10 +40,6 @@ class BasicBuilder {
     throw "addAngularFolderStructureToCompile is not implemented by the builder class";
   }
 
-  getTaskName() {
-    throw "getTaskName must be implemented by the builder class";
-  }
-
   onRegister(moduleName) {
     throw "onRegister must be implemented by the builder class";
   }

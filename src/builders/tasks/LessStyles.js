@@ -8,16 +8,17 @@ const WatchableBuilder = require("../WatchableBuilder");
 const toLessImport = filePath => `@import "${filePath}";`;
 
 class LibsTask extends WatchableBuilder {
+  constructor() {
+    super();
+    this.taskPostfix = "styles";
+  }
+
   onRegister(moduleName) {
     return gulp
       .src(this.compileFiles)
       .pipe(intoOneImportAll({ concatenatingPaths: toLessImport }))
       .pipe(less())
       .pipe(concat(this.outputFileName));
-  }
-
-  getTaskName(moduleName) {
-    return `${moduleName}:styles`;
   }
 }
 module.exports = LibsTask;
