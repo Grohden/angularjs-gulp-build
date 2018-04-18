@@ -18,7 +18,7 @@ class Application {
     this.watcherNames = [];
   }
 
-  setTasks(tasks) {
+  setTasks(...tasks) {
     this.tasks = tasks;
     return this;
   }

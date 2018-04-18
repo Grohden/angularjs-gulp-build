@@ -55,7 +55,7 @@ const AppModule = new Application('demo')
         new Application.Views() // copies html to build folder
             .addAngularFolderStructureToCompile('./app/'),
         new Application.Libs() // concats the libs into one and dont generate a watcher task
-            .setOutputName('demo.libs.js')
+            .setOutputFileName('demo.libs.js')
             .addNodeDependencyPackage('ramda/dist/ramda')
     ]);
 

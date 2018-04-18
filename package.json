@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Grohden/angularjs-gulp-build#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
+    "babel-plugin-angularjs-annotate": "^0.8.2",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.2.0",
     "gulp-babel": "^7.0.1",
@@ -31,7 +32,6 @@
     "gulp-concat": "^2.6.1",
     "gulp-jshint": "^2.1.0",
     "gulp-less": "^4.0.0",
-    "gulp-ng-annotate": "^2.1.0",
     "gulp-order": "github:grohden/gulp-order",
     "gulp-remember": "^1.0.1",
     "gulp-util": "^3.0.8",

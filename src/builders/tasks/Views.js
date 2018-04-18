@@ -8,7 +8,7 @@ class ViewsTask extends WatchableBuilder {
     return gulp.src(this.compileFiles);
   }
 
-  setOutputName(name) {
+  setOutputFileName(name) {
     throw `Can't set output name ${name} for view task because it doesn't generate a concated file, for that instead use the templates task.`;
   }
 

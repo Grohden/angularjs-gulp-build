@@ -12,7 +12,7 @@ class BasicBuilder {
    * Sets the file outputname
    * @param {string} name - name of the resultant file
    */
-  setOutputName(name) {
+  setOutputFileName(name) {
     this.outputFileName = name;
     return this;
   }
