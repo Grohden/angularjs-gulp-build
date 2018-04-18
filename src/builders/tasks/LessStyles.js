@@ -10,7 +10,7 @@ const toLessImport = filePath => `@import "${filePath}";`;
 class LibsTask extends WatchableBuilder {
   constructor() {
     super();
-    this.taskPostfix = "styles";
+    this.name = "[app]:styles";
   }
 
   onRegister(moduleName) {

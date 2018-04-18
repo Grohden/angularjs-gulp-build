@@ -6,7 +6,7 @@ const path = require("path");
 class ViewsTask extends WatchableBuilder {
   constructor() {
     super();
-    this.taskPostfix = "views";
+    this.name = "[app]:views";
   }
 
   onRegister(moduleName) {

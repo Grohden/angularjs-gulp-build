@@ -6,15 +6,16 @@ const gulpBabel = require("gulp-babel");
 const cached = require("gulp-cached");
 const remember = require("gulp-remember");
 const concat = require("gulp-concat");
+const NamesRules = require("../../NameRules");
 
 class ScriptsTask extends WatchableBuilder {
   constructor() {
     super();
-    this.taskPostfix = "scripts";
+    this.name = "[app]:scripts";
   }
 
-  onRegister(moduleName) {
-    const taskName = [moduleName, this.taskPostfix].join(":");
+  onRegister(appName) {
+    const taskName = NamesRules.getName(this.name, { app: appName });
     return gulp
       .src(this.compileFiles)
       .pipe(cached(taskName))

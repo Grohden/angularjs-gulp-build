@@ -7,7 +7,7 @@ const path = require("path");
 class LibsTask extends BasicBuilder {
   constructor() {
     super();
-    this.taskPostfix = "libs";
+    this.name = "[app]:libs";
   }
 
   onRegister(moduleName) {

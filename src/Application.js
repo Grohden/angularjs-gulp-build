@@ -43,7 +43,7 @@ class Application {
   }
 
   registerWatcher(task) {
-    const taskName = NamesRules.join(this.appName, task.taskPostfix);
+    const taskName = NamesRules.getName(task.name, { app: this.appName });
     const watcherName = NamesRules.join(taskName, "watch");
     const runTask = [taskName];
     gulp.task(
@@ -57,21 +57,23 @@ class Application {
     const { appName, tasks } = this;
 
     R.pipe(
-      R.map(task => NamesRules.join(appName, task.taskPostfix)),
+      R.map(task => NamesRules.getName(task.name, { app: appName })),
       R.unless(R.isEmpty, tasks => this.registerAppTask(tasks))
     )(tasks);
 
     R.pipe(
       R.filter(R.is(WatchableBuilder)),
-      R.map(task => NamesRules.join(this.appName, task.taskPostfix, "watch")),
+      R.map(task =>
+        NamesRules.getName(task.name + "watch", { app: this.appName })
+      ),
       R.unless(R.isEmpty, tasks => this.registerModuleWatcher(tasks))
     )(tasks);
 
     for (const task of tasks) {
       this.registerGulpTask(
-        NamesRules.join(appName, task.taskPostfix),
+        NamesRules.getName(task.name, { app: appName }),
         path.normalize(this.outputAt, task.getOutputName()),
-        task.onRegister(this.appName)
+        task.onRegister(appName)
       );
 
       if (task instanceof WatchableBuilder) {
