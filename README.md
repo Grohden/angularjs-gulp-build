@@ -73,15 +73,16 @@ const AppModule = new Application("demo")
 ApplicationRegister.register(AppModule);
 ```
 
-This will generate the following tasks:
+This will generate the following gulp tasks:
 ```
-demo [demo:views, demo:libs]
-demo:watch [demo:views:watch]
-demo:views
-demo:views:watch
-demo:scripts
-demo:libs
-demo:styles
-demo:styles:watch
+demo [demo:views, demo:scripts, demo:libs, demo:styles] // compiles everything
+demo:watch [demo:views:watch, demo:scripts:watch, demo:styles:watch] // watches everything
+demo:views // Copy views (html) into another folder
+demo:views:watch [demo:views]
+demo:scripts // Use babel in the js, order them (modules first) and concats into one final js
+demo:scripts:watch [demo:scripts]
+demo:libs // concats all the js into one final js
+demo:styles // Compiles all the less (or css imported by less) into one final css
+demo:styles:watch [demo:styles]
 ```
 
