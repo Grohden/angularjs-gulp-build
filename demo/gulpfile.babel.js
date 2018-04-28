@@ -4,10 +4,10 @@ const AppModule = new Application("demo")
   .setOutputFolder("./build")
 
   .setTasks(
-    new Application.Views().addAngularFolderStructureToCompile("./app/"),
+    new Application.Views().addFolderStructure("./app/"),
 
     new Application.Scripts()
-      .addAngularFolderStructureToCompile("./app/")
+      .addFolderStructure("./app/")
       .setOutputFileName("demo.app.js"),
 
     new Application.Libs()

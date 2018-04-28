@@ -49,18 +49,26 @@ There are some examples on the demo folder, but
 a 'simply' AngularJS task builder would be:
 
 ```javascript
-const {Application, ApplicationRegister} = require('gulp-angularjs-build');
+const { Application, ApplicationRegister } = require("../index");
 
+const AppModule = new Application("demo")
+  .setOutputFolder("./build")
 
-const AppModule = new Application('demo')
-    .setOutputFolder('./build')
-    .setTasks([
-        new Application.Views() // copies html to build folder
-            .addAngularFolderStructureToCompile('./app/'),
-        new Application.Libs() // concats the libs into one and dont generate a watcher task
-            .setOutputFileName('demo.libs.js')
-            .addNodeDependencyPackage('ramda/dist/ramda')
-    ]);
+  .setTasks(
+    new Application.Views().addFolderStructure("./app/"),
+
+    new Application.Scripts()
+      .addFolderStructure("./app/")
+      .setOutputFileName("demo.app.js"),
+
+    new Application.Libs()
+      .setOutputFileName("demo.libs.js")
+      .addNodeDependencyPackages("ramda/dist/ramda"),
+
+    new Application.Less()
+      .setOutputFileName("demo.css")
+      .addFilesToCompile("./app/styles/*.less")
+  );
 
 ApplicationRegister.register(AppModule);
 ```
@@ -69,7 +77,11 @@ This will generate the following tasks:
 ```
 demo [demo:views, demo:libs]
 demo:watch [demo:views:watch]
+demo:views
 demo:views:watch
+demo:scripts
 demo:libs
+demo:styles
+demo:styles:watch
 ```
 

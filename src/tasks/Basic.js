@@ -37,8 +37,8 @@ class BasicBuilder {
    * Transforms the given baseFolder to an angular pattern
    * @param {string} baseFolder a folder to be mapped to the angular glob pattern
    */
-  addAngularFolderStructureToCompile(baseFolder) {
-    throw "addAngularFolderStructureToCompile is not implemented by the builder class";
+  addFolderStructure(baseFolder) {
+    throw "addFolderStructure is not implemented by the builder class";
   }
 
   onRegister(moduleName) {

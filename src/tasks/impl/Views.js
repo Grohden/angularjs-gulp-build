@@ -24,7 +24,7 @@ class ViewsTask extends WatchableBuilder {
    * Transforms the given baseFolder to an angular pattern
    * @param {string} baseFolder a folder to be mapped to the angular glob pattern
    */
-  addAngularFolderStructureToCompile(baseFolder) {
+  addFolderStructure(baseFolder) {
     this.addFilesToCompile(
       ...Globs.Views.map(glob => path.join(baseFolder, glob))
     );
