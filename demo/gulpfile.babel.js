@@ -14,7 +14,7 @@ const AppModule = new Application("demo")
       .setOutputFileName("demo.libs.js")
       .addNodeDependencyPackages("ramda/dist/ramda"),
 
-    new Application.LessStyles()
+    new Application.Less()
       .setOutputFileName("demo.css")
       .addFilesToCompile("./app/styles/*.less")
   );

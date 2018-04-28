@@ -1,6 +1,9 @@
 # angularjs-gulp-build
 An pre-webpack world gulp build for AngularJS
 
+## Warning: Under construction
+This project is not published on NPM and is not 100% implemented.
+
 ## Damn, another one?
 
 JS world rules ¯\\_(ツ)_/¯

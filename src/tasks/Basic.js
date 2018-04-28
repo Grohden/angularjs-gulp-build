@@ -2,9 +2,10 @@ const path = require("path");
 const R = require("ramda");
 
 class BasicBuilder {
-  constructor() {
+  constructor(taskName) {
     this.compileFiles = [];
     this.outputFileName = "./";
+    this.name = taskName;
   }
 
   /**

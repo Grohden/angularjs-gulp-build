@@ -3,14 +3,18 @@ const gulp = require("gulp");
 const less = require("gulp-less");
 const concat = require("gulp-concat");
 const intoOneImportAll = require("../../plugins/into-one-import-all");
-const WatchableBuilder = require("../WatchableBuilder");
+const WatchableBuilder = require("../Watchable");
 
 const toLessImport = filePath => `@import "${filePath}";`;
-
-class LibsTask extends WatchableBuilder {
-  constructor() {
-    super();
-    this.name = "[app]:styles";
+/**
+ * @name Less
+ * @description
+ * This class creates the styles for less by using a 'import all' vinyl file
+ * and creates the watcher task for all included files.
+ */
+module.exports = class Less extends WatchableBuilder {
+  constructor(name) {
+    super(`[app]:${name || "styles"}`);
   }
 
   onRegister(moduleName) {
@@ -20,5 +24,4 @@ class LibsTask extends WatchableBuilder {
       .pipe(less())
       .pipe(concat(this.outputFileName));
   }
-}
-module.exports = LibsTask;
+};

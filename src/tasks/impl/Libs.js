@@ -1,4 +1,4 @@
-const BasicBuilder = require("../BasicBuilder");
+const BasicBuilder = require("../Basic");
 const Globs = require("../../Globs");
 const gulp = require("gulp");
 const concat = require("gulp-concat");

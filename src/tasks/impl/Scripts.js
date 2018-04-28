@@ -1,4 +1,4 @@
-const WatchableBuilder = require("../WatchableBuilder");
+const WatchableBuilder = require("../Watchable");
 const Globs = require("../../Globs");
 const gulp = require("gulp");
 const path = require("path");
@@ -9,9 +9,8 @@ const concat = require("gulp-concat");
 const NamesRules = require("../../NameRules");
 
 class ScriptsTask extends WatchableBuilder {
-  constructor() {
-    super();
-    this.name = "[app]:scripts";
+  constructor(name) {
+    super(`[app]:${name || "scripts"}`);
   }
 
   onRegister(appName) {

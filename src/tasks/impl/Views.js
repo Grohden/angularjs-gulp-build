@@ -1,12 +1,11 @@
-const WatchableBuilder = require("../WatchableBuilder");
+const WatchableBuilder = require("../Watchable");
 const Globs = require("../../Globs");
 const gulp = require("gulp");
 const path = require("path");
 
 class ViewsTask extends WatchableBuilder {
-  constructor() {
-    super();
-    this.name = "[app]:views";
+  constructor(name) {
+    super(`[app]:${name || "views"}`);
   }
 
   onRegister(moduleName) {

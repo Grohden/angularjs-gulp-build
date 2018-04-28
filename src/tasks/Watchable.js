@@ -1,10 +1,10 @@
 const path = require("path");
 const R = require("ramda");
-const BasicBuilder = require("./BasicBuilder");
+const BasicBuilder = require("./Basic");
 
 class WatchableBuilder extends BasicBuilder {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
     this.watchFiles = [];
     this.automaticWatchForCompile = true;
   }
